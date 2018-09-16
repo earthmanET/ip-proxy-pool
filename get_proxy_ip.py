@@ -7,7 +7,7 @@ import csv
 
 def xici_ip_spider(start,end):
     url='http://www.xicidaili.com/nn/'
-    csvfile=open('xici.csv','w')
+    csvfile=open('xici.csv','w',newline="")
     writer=csv.writer(csvfile)
     print("The result will be saved in xici.csv")
     headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36'}
@@ -64,7 +64,7 @@ def kuaidaili_ip_spider(start,end):
 
 def liuliuip_ip_spider(start,end):
     url='http://www.66ip.cn/'
-    csvfile=open('66ip.csv','w')
+    csvfile=open('66ip.csv','w',newline="")
     print("The result will be saved in 66ip.csv")
     writer=csv.writer(csvfile)
     headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36'}
