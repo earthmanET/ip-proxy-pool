@@ -7,11 +7,11 @@ import csv
 
 def xici_ip_spider(start,end):
     url='http://www.xicidaili.com/nn/'
-    csvfile=file('xici.csv','w')
+    csvfile=open('xici.csv','w')
     writer=csv.writer(csvfile)
     print("The result will be saved in xici.csv")
     headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36'}
-    for num in xrange(start,end+1):
+    for num in range(start,end+1):
         sleep(2)
         print('Now downloaing the page' + str(num) + ' ips')
         request=requests.get(url+str(num),headers=headers)
@@ -23,16 +23,16 @@ def xici_ip_spider(start,end):
             try:
                 temp=[]
                 tds=item.find_all('td')
-                temp.append(tds[1].text.encode('utf-8'))
-                temp.append(tds[2].text.encode('utf-8'))
-                temp.append(tds[5].text.encode('utf-8'))
+                temp.append(tds[1].text)
+                temp.append(tds[2].text)
+                temp.append(tds[5].text)
                 writer.writerow(temp)
             except IndexError:
                 pass
 
 def kuaidaili_ip_spider(start,end):
     url='https://www.kuaidaili.com/free/inha/'
-    csvfile=file('kuaidaili.csv','w')
+    csvfile=open('kuaidaili.csv','w',newline="")
     print("The result will be saved in kuaidaili.csv")
     writer=csv.writer(csvfile)
     s = requests.session()
@@ -40,7 +40,7 @@ def kuaidaili_ip_spider(start,end):
     headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
              'Connection': 'close'
              }
-    for num in xrange(start,end+1):
+    for num in range(start,end+1):
         sleep(2)
         print('Now downloa ing the page' + str(num) + ' ips')
         try:
@@ -55,20 +55,20 @@ def kuaidaili_ip_spider(start,end):
             try:
                 temp=[]
                 tds=item.find_all('td')
-                temp.append(tds[0].text.encode('utf-8'))
-                temp.append(tds[1].text.encode('utf-8'))
-                temp.append(tds[3].text.encode('utf-8'))
+                temp.append(tds[0].text)
+                temp.append(tds[1].text)
+                temp.append(tds[3].text)
                 writer.writerow(temp)
             except IndexError:
                 pass
 
 def liuliuip_ip_spider(start,end):
     url='http://www.66ip.cn/'
-    csvfile=file('66ip.csv','w')
+    csvfile=open('66ip.csv','w')
     print("The result will be saved in 66ip.csv")
     writer=csv.writer(csvfile)
     headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36'}
-    for num in xrange(start,end+1):
+    for num in range(start,end+1):
         sleep(2)
         print('Now downloaing the page' + str(num) + ' ips')
         try:
@@ -82,8 +82,8 @@ def liuliuip_ip_spider(start,end):
             try:
                 temp=[]
                 tds=item.find_all('td')
-                temp.append(tds[0].text.encode('utf-8'))
-                temp.append(tds[1].text.encode('utf-8'))
+                temp.append(tds[0].text)
+                temp.append(tds[1].text)
                 writer.writerow(temp)
             except IndexError:
                 pass
@@ -95,11 +95,11 @@ def main():
     print("[2]www.kuaidaili.com")
     print("[3]www.66ip.cn")
     answer=input()
-    if answer==1:
+    if answer=="1":
         xici_ip_spider(1,100) #可手动更改页数
-    elif answer==2:
+    elif answer=="2":
         kuaidaili_ip_spider(1,100)
-    elif answer==3:
+    elif answer=="3":
         liuliuip_ip_spider(1,100)
     else:
         exit()
