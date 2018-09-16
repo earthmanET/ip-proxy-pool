@@ -6,6 +6,7 @@ import threading
 from time import sleep
 import csv
 
+
 csvfile=open('valid_ip.csv','w')
 writer=csv.writer(csvfile)
 
